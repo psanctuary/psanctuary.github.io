@@ -1,14 +1,19 @@
-/* Psanctuary's arrival config, read by arrival.js. Shared by every Psanctuary page: the entry portal
-   and (by absolute URL) the AstroLog.
+/* Psanctuary's arrival config, read by arrival.js (kit v1.2). Shared by every Psanctuary page: the
+   entry portal (/, /donate/, /map/, the 404) and, by absolute URL, the AstroLog.
 
-   Every fact here comes from psanctuary.org's own public pages (home, About, What to Expect,
-   Community Tools, Membership). Anything not decided yet is marked as a placeholder or "coming soon"
-   rather than guessed. People are named by first name only. Strings shown in the welcome guide may
-   hold simple HTML. */
+   psanctuary is the church's decentralized, playful side on GitHub; its sibling, psanctuarychurch, is
+   the church's professional face. Every fact here comes from psanctuary.org's own public pages (home,
+   About, Contact, Community Tools, Membership, Donate). Anything not decided yet is marked as a
+   placeholder or "coming soon" rather than guessed, and no link is ever made up. People are named by
+   first name and last initial. Strings shown in the guide and the modals may hold simple HTML. */
 (function () {
   var ROOT = "https://psanctuary.github.io";
   var LOG = ROOT + "/changelog-astro-public";
   var SITE = "https://www.psanctuary.org";
+  var SIBLING = "https://psanctuarychurch.github.io";
+  // The church's member network on Mighty Networks: its front page, and the plans to join.
+  var MIGHTY = "https://psanctuary-member-community.mn.co/";
+  var MIGHTY_PLANS = "https://psanctuary-member-community.mn.co/plans/";
   // Spore violets and bruise blues. They color the guide's cap (one gill per step) and the initials
   // avatars of anyone without a GitHub picture.
   var GILLS = ["#a88bc9", "#74bce0", "#8c70b0", "#5fa8d3", "#c2a9e0", "#9fd3ee", "#6a4c8c", "#3e8db8"];
@@ -16,7 +21,7 @@
   // An initials avatar in the family's shape: a tiny spore print (gills, dust, a stem ring) with the
   // initials at its heart. System serif only: an <img> SVG can't load the page's web fonts.
   function sporeAvatar(ini, c1, c2, name) {
-    // People here are named by first name only, so one letter, not the first two of the name.
+    // Someone named by one word gets one letter, not the first two of the name.
     var one = String(name || "").trim();
     if (one && !/\s/.test(one)) ini = one.charAt(0).toUpperCase();
     var g = "";
@@ -42,10 +47,10 @@
   window.ARRIVAL = {
     org: {
       short: "Psanctuary",
-      name: "Sacred Mushroom Church",
+      name: "The playful side",
       motto: "Rooted in sincerity, cultivated by the mushroom.",
       about:
-        "In psanctuary.org's own words, Psanctuary is “an inter-tradition church built on growing together with a sincere sacred mushroom practice rooted in spiritual autonomy.” There's no single doctrine, and members come from every background and tradition.",
+        "In psanctuary.org's own words, Psanctuary is “an inter-tradition church built on growing together with a sincere sacred mushroom practice rooted in spiritual autonomy.” This GitHub organization is its decentralized, playful side: experiments in tools the community can own, a little more color, and an open record of how it's all built. The church's professional face on GitHub is its sibling, psanctuarychurch.",
       // The family mark: a spore print with its stem ring, in this org's accent.
       mark: { src: ROOT + "/favicon.svg" },
       home: {
@@ -55,7 +60,7 @@
       },
       welcomeNote: null,
       welcomePlaceholder:
-        "A few words of welcome from the church belong here. The space is left empty on purpose until someone at Psanctuary would like to write them.",
+        "A few words of welcome belong here, perhaps from Psanctuary's co-founders, Eric O, Courtney M and Athena. The space is left empty on purpose until someone at the church would like to write them.",
     },
 
     // Psanctuary's portal and AstroLog share one origin, so one key carries every choice between them.
@@ -65,6 +70,7 @@
       { id: "spore", name: "Spore Print", note: "Violet-black, like the print a cap leaves on paper overnight, lit in bruise blue.", swatch: ["#16111a", "#74bce0"], dark: true },
       { id: "paper", name: "Print Paper", note: "The white card a print is taken on, inked in violet and blue.", swatch: ["#f3f1f4", "#1a6a90"], calm: true },
       { id: "dusk", name: "Blue Hour", note: "Deep twilight blue, the color a cap turns where it's touched.", swatch: ["#0e1524", "#8fd0f2"], dark: true },
+      { id: "blacklight", name: "Blacklight", note: "The playful one: ultraviolet black, glowing lime and spore pink, like a poster under a black light.", swatch: ["#0b0612", "#c9f76f"], dark: true },
       {
         id: "day",
         name: "Follow the day",
@@ -79,8 +85,8 @@
     ],
     defaultMode: "spore",
 
-    // Reading mode (kit 1.1): one tap for Print Paper, the spores at rest, more contrast and no
-    // mycelium threads; another tap brings back what the visitor had.
+    // Reading mode: one tap for Print Paper, the spores at rest, more contrast, no mycelium threads
+    // and a comfortable line length; text size steps sit beside it (kit 1.2).
     reading: { light: "paper" },
 
     // "What's new since your last visit": the AstroLog's latest.json lists its newest entries,
@@ -88,8 +94,7 @@
     news: { sources: [LOG + "/latest.json"] },
 
     // The spore field behind every page: spores drift up, and the pointer grows mycelium threads to
-    // the ones nearby. Its cursor effects (threads and spore dust) switch off on their own, and rest
-    // whenever motion is Still. The field draws them itself, so no kit trail here.
+    // the ones nearby. Its cursor effects switch off on their own, and rest whenever motion is Still.
     motions: [
       { id: "still", name: "Still", icon: "pause", note: "The spores settle where they are, and nothing moves." },
       { id: "drift", name: "Drift", icon: "wind", note: "Spores drift upward. Your pointer grows mycelium threads to the ones nearby and leaves a little spore dust." },
@@ -103,13 +108,153 @@
     // Gravatar only for an address at the church's own domain; otherwise GitHub, otherwise initials.
     avatar: { shape: "circle", roleDomains: ["psanctuary.org"], svg: sporeAvatar },
 
-    // No community space of its own yet: the guide says "coming soon" (see guide.community below).
-    community: null,
+    // ── kit 1.2: the navbar, shared by the portal and the AstroLog ─────────────────────────────
+    // Lower priority folds into "More" first when the bar runs short; below 1100px it all folds
+    // into the Menu.
+    nav: {
+      label: "Psanctuary",
+      fold: 1100,
+      items: [
+        { id: "portal", label: "Portal", icon: "house-simple", href: ROOT + "/", hideOn: ["portal"], priority: 1, note: "Psanctuary's front door on GitHub" },
+        { id: "porch", label: "Porch", icon: "door-open", href: LOG + "/", exact: true, priority: 1, note: "The AstroLog's front door" },
+        { id: "changelog", label: "Changelog", icon: "clock-counter-clockwise", href: LOG + "/changelog", priority: 3, note: "What changed, newest first" },
+        { id: "library", label: "Library", icon: "books", href: LOG + "/library", priority: 2, note: "Longer write-ups on how it works" },
+        { id: "ledger", label: "Ledger", icon: "scroll", href: LOG + "/ledger", priority: 2, note: "Every public change, in plain words" },
+        { id: "map", label: "Map", icon: "map-trifold", href: LOG + "/map", hrefs: { portal: ROOT + "/map/" }, priority: 2, note: "Every place, with a picture of each" },
+        {
+          id: "involved",
+          label: "Get involved",
+          icon: "hand-heart",
+          priority: 3,
+          items: [
+            { id: "community", label: "Community", icon: "users-three", href: MIGHTY, open: "community", note: "Where the community gathers" },
+            { id: "contact", label: "Reach out", icon: "envelope-simple", href: SITE + "/contact", open: "contact", note: "Every way to reach the church" },
+            { id: "donate", label: "Donate", icon: "heart", href: ROOT + "/donate/", note: "Ways to give, and thanks by name" },
+          ],
+        },
+        {
+          id: "about",
+          label: "About",
+          icon: "info",
+          priority: 1,
+          items: [
+            { id: "roadmap", label: "Roadmap", icon: "path", href: LOG + "/roadmap", note: "Where these pages are headed" },
+            { id: "sustainability", label: "Sustainability", icon: "plant", href: LOG + "/sustainability", note: "What it takes to keep them running" },
+            { id: "home", label: "psanctuary.org", icon: "globe-simple", href: SITE, note: "The church's main site" },
+            { id: "sibling", label: "Psanctuary Church", icon: "tree-structure", href: SIBLING + "/", note: "The sibling org: the church's professional face" },
+            { id: "github", label: "GitHub", icon: "github-logo", href: "https://github.com/psanctuary", note: "The organization and its code" },
+          ],
+        },
+      ],
+    },
+    footer: {
+      label: "Psanctuary, all the ways around",
+      groups: [
+        { label: "Explore", icon: "compass", items: ["portal", "porch", "changelog", "library", "ledger", "map"] },
+        { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
+        { label: "About this build", icon: "wrench", items: ["roadmap", "sustainability", "github", { id: "source", label: "AstroLog source", icon: "code", href: "https://github.com/psanctuary/changelog-astro-public" }] },
+        { label: "Psanctuary", icon: "plant", items: ["home", "sibling", { id: "youtube", label: "YouTube", icon: "youtube-logo", href: "https://www.youtube.com/@psanctuarychurch" }] },
+      ],
+      note: "Code here is MIT licensed and the words are CC BY-SA 4.0. The Psanctuary name and marks belong to the church.",
+    },
+
+    // ── kit 1.2: one modal for every way to reach the church ───────────────────────────────────
+    contact: {
+      title: "Reach out",
+      intro: "Every way to reach the people behind Psanctuary. Pick whichever suits you.",
+      paths: [
+        {
+          kind: "form",
+          label: "The contact form on psanctuary.org",
+          href: SITE + "/contact",
+          action: "Open the form",
+          note: "In the church's own words: “To reach our team, please fill out the form below or e-mail info@psanctuary.org.”",
+        },
+        {
+          kind: "email",
+          label: "info@psanctuary.org",
+          href: "mailto:info@psanctuary.org",
+          note: "The church's public address, for questions about membership, Sunday service, ceremonies, courses, giving, or these pages.",
+        },
+        {
+          kind: "github",
+          label: "A contacts page on GitHub",
+          placeholder: "This organization doesn't have a CONTACTS.md yet. Until it does, the form or the address above reaches the team.",
+        },
+      ],
+    },
+
+    // ── where the community talks: the church's member network for now, a Discord placeholder,
+    //    and the sneak peek at a network of the community's own ──────────────────────────────────
+    community: {
+      name: "the member community",
+      icon: "users-three",
+      label: "See every way in",
+      title: "Where we gather",
+      eyebrow: "Community",
+      text: "For now, Psanctuary's community is the church's own: the member network on Mighty Networks. A space for this playful side may come later, and further out, a network the community owns.",
+      intro: "Psanctuary's community gathers in the church's member network. Each place below has a public link anyone can open, and a way to sign up.",
+      platforms: [
+        {
+          id: "mighty",
+          kind: "mighty",
+          name: "Psanctuary Member Community",
+          text: "The church's private member network: events, member-led clubs, courses and messages, on the web and in the Mighty app. It comes with membership.",
+          public: { href: MIGHTY, label: "Visit the community", note: "Its front page. Members sign in here." },
+          join: { href: MIGHTY_PLANS, label: "See membership plans", note: "Choose a plan to join." },
+        },
+        {
+          id: "discord",
+          kind: "discord",
+          name: "Psanctuary on Discord",
+          status: "soon",
+          text: "A placeholder for a chat space on this playful, experimental side. There isn't one yet; when there is, both of its links will appear here.",
+        },
+      ],
+      bespoke: {
+        title: "A network of our own",
+        tag: "Sneak peek",
+        icon: "graph",
+        text: "Further out, Psanctuary would like a small social network of its own, owned by the people in it rather than by one company.",
+        points: [
+          "Profiles and posts on open protocols like Lens and Farcaster, so what members share stays theirs.",
+          "Paired with a Psanctuary DAO, where members can propose ideas and decide together.",
+          "Privacy first: you choose what's public and what stays among members.",
+        ],
+        note: "No dates, and nothing to sign up for yet. This is a direction, not a promise. When there's something to try, it'll appear here first.",
+      },
+      more: ['Sunday service is open to everyone, online. <a href="' + SITE + '/community-tools">psanctuary.org/community-tools</a> explains the member network.'],
+    },
+
+    // ── kit 1.2: the donate page (/donate/) ────────────────────────────────────────────────────
+    donate: {
+      give: [
+        {
+          label: "Give through psanctuary.org",
+          icon: "heart",
+          href: SITE + "/donate",
+          action: "Give on psanctuary.org",
+          note: "The church's own giving page. In psanctuary.org's words: “Your donation supports the right to spiritual connection through entheogens and supports a growing community preserving and sharing practices with sacred mushrooms.”",
+        },
+      ],
+      disclaimer: {
+        title: "Please note",
+        text: "Gifts are made on psanctuary.org, through the church's own checkout. This GitHub page doesn't take payments and never sees payment details. Questions about giving go to <a href=\"mailto:info@psanctuary.org\">info@psanctuary.org</a>.",
+      },
+      ledger: {
+        src: ROOT + "/donate/contributors.json",
+        title: "Contribution ledger",
+        intro: "People and groups who have given time, skills or gifts to Psanctuary's GitHub home, and said yes to being thanked by name here.",
+      },
+      crypto: {
+        text: "Giving from a crypto wallet is planned for this page: one button for browser wallets, phone wallets and email sign-in. It isn't open yet.",
+      },
+    },
 
     record: {
       intro: "Psanctuary's AstroLog has two halves.",
       share:
-        "Sharing one change? Every entry and every write-up has its own preview card, a spore print of its own with the title and summary. Paste its link into Telegram, iMessage or Discord and it arrives with that card. The <strong>Copy a link</strong> button under each one does the copying.",
+        "Sharing one change? Every entry and every write-up has its own preview card, a prism spore print of its own with the title and summary. Paste its link into Telegram, iMessage or Discord and it arrives with that card. The <strong>Copy a link</strong> button under each one does the copying.",
       changelog: {
         name: "The changelog",
         text: "Every notable change to Psanctuary's GitHub home, newest first. Each entry opens with a one-line summary, with the full story folded underneath, and credits whoever did the work.",
@@ -124,7 +269,7 @@
       },
       ledger: {
         name: "The ledger",
-        text: "Every public change to Psanctuary's code on GitHub, in plain words: grouped by day and by kind, credited by first name, and linked to the change itself. For anyone who'd rather not open GitHub. It refreshes every day.",
+        text: "Every public change to Psanctuary's code on GitHub, in plain words: grouped by day and by kind, credited by name, and linked to the change itself. For anyone who'd rather not open GitHub. It refreshes every day.",
         href: LOG + "/ledger",
         label: "Open the ledger",
       },
@@ -133,7 +278,7 @@
     sites: {
       portal: {
         name: "Psanctuary on GitHub",
-        what: "This is Psanctuary's front door on GitHub: a quiet place for the church's technical work, and the way into the AstroLog, where every change is written down.",
+        what: "This is Psanctuary's playful corner of GitHub: where experiments in decentralized, community-owned tools take shape, and the way into the AstroLog, where every change is written down.",
       },
       astrolog: {
         name: "the Psanctuary AstroLog",
@@ -143,20 +288,14 @@
 
     guide: {
       light: {
-        text: "Every Psanctuary page takes its colors from a spore print: violet-black, the paper it's taken on, and the blue a cap turns where it's touched. Pick one, and it follows you from page to page.",
+        text: "Every Psanctuary page takes its colors from a spore print: violet-black, the paper it's taken on, the blue a cap turns where it's touched, and, for the playful, a blacklight. Pick one, and it follows you from page to page.",
       },
       motion: {
-        text: "Behind each page, spores drift upward. Move your pointer and mycelium threads reach out to the spores nearby, the way a mushroom's network grows underground. Choose how much moves, and whether you'd like more contrast for reading.",
+        text: "Behind each page, spores drift upward. Move your pointer and mycelium threads reach out to the spores nearby, the way a mushroom's network grows underground. Choose how much moves, how large the text is, and whether you'd like more contrast for reading.",
       },
       people: {
-        text: "Every entry credits whoever did the work, by first name. Eric and Alana are here early, so you can see how the record will look as more of the community takes part.",
+        text: "Every entry credits whoever did the work, by first name and last initial. Eric O and Alana are here early, so you can see how the record will look as more of the community takes part.",
         fine: "Pictures come from public GitHub profiles. Anyone without one linked gets a small spore print with their initials.",
-      },
-      community: {
-        html:
-          "<p>Psanctuary's GitHub home doesn't have a community space of its own yet.</p>" +
-          '<p class="arr-placeholder arr-shape"><i class="ph ph-plant" aria-hidden="true"></i><span><strong>Coming soon.</strong> When there is one, this is where you\'ll find the way in.</span></p>' +
-          '<p class="arr-fine">Until then, the church\'s <a href="' + SITE + '/sunday">Sunday service</a> is open to everyone online, and members gather in the network that <a href="' + SITE + '/community-tools">psanctuary.org describes</a>.</p>',
       },
     },
     guideFinale: "You've lit every gill of the print. Welcome to Psanctuary.",
@@ -164,7 +303,7 @@
     words: {
       enter: "Enter Psanctuary",
       cursorNote: "Mycelium threads that reach from your pointer to nearby spores, and a little spore dust as you move. Switch them off if you'd rather not.",
-      readingNote: "One tap for the calmest page: Print Paper, the spores at rest, more contrast, and no mycelium threads. Tap again to go back to how you had it.",
+      readingNote: "One tap for the calmest page: Print Paper, the spores at rest, more contrast, shorter lines, and no mycelium threads. Tap again to go back to how you had it.",
       pause: "Let the spores settle",
       play: "Let the spores drift",
       searchTip: "Anywhere on Psanctuary's pages, any time: every change, write-up, person and page, including the AstroLog from the entry portal.",
@@ -176,19 +315,21 @@
         { t: "Psanctuary entry portal", k: "page", i: "house", h: ROOT + "/", pin: true, x: "home github io root portal" },
         { t: "psanctuary.org", k: "the church", i: "globe-simple", h: SITE, pin: true, x: "website main home church" },
         { t: "The ledger: every public change", k: "AstroLog", i: "scroll", h: LOG + "/ledger", pin: true, x: "commits github history code record plain words" },
+        { t: "Map: every place, with pictures", k: "page", i: "map-trifold", h: LOG + "/map", pin: true, x: "sitemap where everything links overview thumbnails" },
+        { t: "Donate", k: "page", i: "heart", h: ROOT + "/donate/", x: "give gift support money contribution ledger thanks crypto" },
+        { t: "Roadmap", k: "page", i: "path", h: LOG + "/roadmap", x: "plans next future ideas direction" },
+        { t: "Sustainability", k: "page", i: "plant", h: LOG + "/sustainability", x: "maintenance keep running tokens costs upkeep" },
         { t: "What to expect", k: "psanctuary.org", i: "compass", h: SITE + "/welcome", x: "welcome new members ceremony" },
         { t: "Sunday service", k: "psanctuary.org", i: "sun-horizon", h: SITE + "/sunday", x: "zoom meditation tao journaling weekly online" },
         { t: "Membership", k: "psanctuary.org", i: "hand-heart", h: SITE + "/membership", x: "join member plans" },
-        { t: "Member network", k: "psanctuary.org", i: "users-three", h: SITE + "/community-tools", x: "community mighty networks members" },
         { t: "Courses", k: "psanctuary.org", i: "graduation-cap", h: SITE + "/courses", x: "space holding foundations education" },
         { t: "Events calendar", k: "psanctuary.org", i: "calendar-dots", h: SITE + "/events", x: "events meetups" },
         { t: "Church blog", k: "psanctuary.org", i: "notebook", h: SITE + "/blog", x: "blog posts founders" },
         { t: "About Psanctuary", k: "psanctuary.org", i: "info", h: SITE + "/about", x: "mission vision about louisville kentucky" },
         { t: "My Mushroom Map", k: "psanctuary.org", i: "map-trifold", h: SITE + "/mushroom-map", x: "mini course safety legality integration" },
         { t: "Psanctuary on YouTube", k: "link", i: "youtube-logo", h: "https://www.youtube.com/@psanctuarychurch", x: "video" },
-        { t: "Ask a question", k: "email", i: "envelope-simple", h: "mailto:info@psanctuary.org", x: "contact email info reach out" },
         { t: "Psanctuary on GitHub", k: "link", i: "github-logo", h: "https://github.com/psanctuary", x: "organization code repositories" },
-        { t: "Sibling org: psanctuarychurch", k: "link", i: "tree-structure", h: "https://psanctuarychurch.github.io/", x: "sibling church second organization" },
+        { t: "Sibling org: Psanctuary Church", k: "link", i: "tree-structure", h: SIBLING + "/", x: "sibling church second organization professional" },
       ],
     },
   };
