@@ -1,4 +1,4 @@
-/* Psanctuary's arrival config, read by arrival.js (kit v1.2). Shared by every Psanctuary page: the
+/* Psanctuary's arrival config, read by arrival.js (kit v1.3). Shared by every Psanctuary page: the
    entry portal (/, /donate/, /map/, the 404) and, by absolute URL, the AstroLog.
 
    psanctuary is the church's decentralized, playful side on GitHub; its sibling, psanctuarychurch, is
@@ -227,6 +227,19 @@
     },
 
     // ── kit 1.2: the donate page (/donate/) ────────────────────────────────────────────────────
+    // Give with crypto (kit v1.3, arrival/give/give.js): one Connect button in the donate page's crypto
+    // slot. The Reown project (a public client ID, shared by the fleet's portals for now) must list
+    // https://psanctuary.github.io in its allowlist at dashboard.reown.com; until it does, the page
+    // calmly says wallet connect isn't switched on for this site yet. No treasury address yet, so every
+    // coin reads "Treasury address coming soon" and connecting is a labelled preview. Never put a
+    // placeholder or example address here: the page would show it. note: the org's own words, if any.
+    give: {
+      reownProjectId: "00b6a1cd528ff580f1fd845ed08b0187",
+      chains: ["mainnet"],
+      addresses: { eth: null, btc: null, sol: null },
+      note: "",
+    },
+
     donate: {
       give: [
         {
