@@ -1,5 +1,5 @@
-/* Psanctuary's arrival config, read by arrival.js (kit v1.3). Shared by every Psanctuary page: the
-   entry portal (/, /donate/, /map/, the 404) and, by absolute URL, the AstroLog.
+/* Psanctuary's arrival config, read by arrival.js (kit v1.4). Shared by every Psanctuary page: the
+   entry portal (/, /donate/, /pledge/, /map/, the 404) and, by absolute URL, the AstroLog.
 
    psanctuary is the church's decentralized, playful side on GitHub; its sibling, psanctuarychurch, is
    the church's professional face. Every fact here comes from psanctuary.org's own public pages (home,
@@ -11,9 +11,18 @@
   var LOG = ROOT + "/changelog-astro-public";
   var SITE = "https://www.psanctuary.org";
   var SIBLING = "https://psanctuarychurch.github.io";
-  // The church's member network on Mighty Networks: its front page, and the plans to join.
+  // The church's member network on Mighty Networks. One link (Christopher's decision, 2026-10-22):
+  // the root and /plans/ show the same page to a visitor who isn't signed in, and both open the
+  // dashboard for a member who is, so the root is the one door, for joining and for signing in.
   var MIGHTY = "https://psanctuary-member-community.mn.co/";
-  var MIGHTY_PLANS = "https://psanctuary-member-community.mn.co/plans/";
+  // Every way to reach the church, on GitHub (psanctuary/.github).
+  var CONTACTS = "https://github.com/psanctuary/.github/blob/main/CONTACTS.md";
+  // The church's own words about its standing and about giving, quoted on /donate/ (receipts and
+  // taxes): the legal notice on psanctuary.org, and the donation page on its ministries site.
+  var LEGAL = SITE + "/legal-notice";
+  var MINISTRIES_DONATE = "https://ministries.psanctuary.org/donate";
+  // Keeps fonts with contextual alternates from turning "(c)" into a copyright sign.
+  var C508 = '<span style="font-variant-ligatures: none; font-feature-settings: \'calt\' 0, \'liga\' 0, \'dlig\' 0">508(c)(1)(a)</span>';
   // Spore violets and bruise blues. They color the guide's cap (one gill per step) and the initials
   // avatars of anyone without a GitHub picture.
   var GILLS = ["#a88bc9", "#74bce0", "#8c70b0", "#5fa8d3", "#c2a9e0", "#9fd3ee", "#6a4c8c", "#3e8db8"];
@@ -127,9 +136,10 @@
           icon: "hand-heart",
           priority: 3,
           items: [
-            { id: "community", label: "Community", icon: "users-three", href: MIGHTY, open: "community", note: "Where the community gathers" },
+            { id: "community", label: "Community", icon: "users-three", href: MIGHTY, open: "community", note: "The member network, on Mighty Networks" },
             { id: "contact", label: "Reach out", icon: "envelope-simple", href: SITE + "/contact", open: "contact", note: "Every way to reach the church" },
             { id: "donate", label: "Donate", icon: "heart", href: ROOT + "/donate/", note: "Ways to give, and thanks by name" },
+            { id: "pledge", label: "Pledge", icon: "handshake", href: ROOT + "/pledge/", note: "Sign a pledge of support: free, nothing sent" },
           ],
         },
         {
@@ -151,8 +161,8 @@
       label: "Psanctuary, all the ways around",
       groups: [
         { label: "Explore", icon: "compass", items: ["portal", "porch", "changelog", "library", "ledger", "map"] },
-        { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
-        { label: "About this build", icon: "wrench", items: ["roadmap", "sustainability", "github", { id: "source", label: "AstroLog source", icon: "code", href: "https://github.com/psanctuary/changelog-astro-public" }] },
+        { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", "pledge", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
+        { label: "About this build", icon: "wrench", items: ["roadmap", "sustainability", "github", { id: "contacts", label: "CONTACTS.md", icon: "address-book", href: CONTACTS }, { id: "source", label: "AstroLog source", icon: "code", href: "https://github.com/psanctuary/changelog-astro-public" }] },
         { label: "Psanctuary", icon: "plant", items: ["home", "sibling", { id: "youtube", label: "YouTube", icon: "youtube-logo", href: "https://www.youtube.com/@psanctuarychurch" }] },
       ],
       note: "Code here is MIT licensed and the words are CC BY-SA 4.0. The Psanctuary name and marks belong to the church.",
@@ -178,37 +188,33 @@
         },
         {
           kind: "github",
-          label: "A contacts page on GitHub",
-          placeholder: "This organization doesn't have a CONTACTS.md yet. Until it does, the form or the address above reaches the team.",
+          label: "Every way in, on GitHub",
+          href: CONTACTS,
+          action: "Open CONTACTS.md",
+          note: "The church's addresses, the member network and the channels psanctuary.org lists, in one page.",
         },
       ],
     },
 
-    // ── where the community talks: the church's member network for now, a Discord placeholder,
-    //    and the sneak peek at a network of the community's own ──────────────────────────────────
+    // ── where the community talks: the church's member network, one link (Christopher's decision,
+    //    2026-10-22), with the honest story of the Discord in the fine print, and the sneak peek at a
+    //    network of the community's own. ──────────────────────────────────────────────────────────
     community: {
       name: "the member community",
       icon: "users-three",
       label: "See every way in",
       title: "Where we gather",
       eyebrow: "Community",
-      text: "For now, Psanctuary's community is the church's own: the member network on Mighty Networks. A space for this playful side may come later, and further out, a network the community owns.",
-      intro: "Psanctuary's community gathers in the church's member network. Each place below has a public link anyone can open, and a way to sign up.",
+      text: "Psanctuary's community gathers in one place: the church's member network on Mighty Networks. Further out, a network the community owns, and a DAO to go with it.",
+      intro: "Psanctuary's community gathers in one place, the church's member network. One link does both: visitors see how to join, and members land on their dashboard.",
       platforms: [
         {
           id: "mighty",
           kind: "mighty",
           name: "Psanctuary Member Community",
-          text: "The church's private member network: events, member-led clubs, courses and messages, on the web and in the Mighty app. It comes with membership.",
-          public: { href: MIGHTY, label: "Visit the community", note: "Its front page. Members sign in here." },
-          join: { href: MIGHTY_PLANS, label: "See membership plans", note: "Choose a plan to join." },
-        },
-        {
-          id: "discord",
-          kind: "discord",
-          name: "Psanctuary on Discord",
-          status: "soon",
-          text: "A placeholder for a chat space on this playful, experimental side. There isn't one yet; when there is, both of its links will appear here.",
+          text: "The church's member network: events, member-led clubs, courses and messages, on the web and in the Mighty app. It comes with membership.",
+          // One door: the kit always draws a public slot too; org.css hides an empty one on a live card.
+          join: { href: MIGHTY, label: "Join or sign in on Mighty Networks", note: "New here? You'll see how to join. Members land on their dashboard." },
         },
       ],
       bespoke: {
@@ -220,9 +226,11 @@
           "Profiles and posts on open protocols like Lens and Farcaster, so what members share stays theirs.",
           "Paired with a Psanctuary DAO, where members can propose ideas and decide together.",
           "Privacy first: you choose what's public and what stays among members.",
+          'And tokens of gratitude: soulbound thank-yous that stay in the wallet they\'re given to (a <a href="' + ROOT + '/pledge/">sneak peek on the pledge page</a>).',
         ],
         note: "No dates, and nothing to sign up for yet. This is a direction, not a promise. When there's something to try, it'll appear here first.",
       },
+      fine: "Why there's no Discord: Psanctuary once had one, and Eric O closed it on purpose, so the community gathers in one place, on Mighty Networks. A Discord may only ever come back as a help-desk back end most people would never see, unless a DAO or something new grows here. Time will tell.",
       more: ['Sunday service is open to everyone, online. <a href="' + SITE + '/community-tools">psanctuary.org/community-tools</a> explains the member network.'],
     },
 
@@ -262,6 +270,32 @@
       crypto: {
         text: "Giving from a crypto wallet is planned for this page: one button for browser wallets, phone wallets and email sign-in. It isn't open yet.",
       },
+      // kit 1.4: "Receipts and taxes", in the church's own words only, quoted and linked, never
+      // restated as more (checked 2026-10-22, also in the private crawl archive): the legal notice's
+      // own summary ("Psanctuary Church is a lawfully incorporated 508(c)(1)(a) Faith Based
+      // Organization operating."; its body says "As a 508 organization") and the donation page on
+      // ministries.psanctuary.org, with its own CPA line. The kit adds "This isn't tax advice."
+      tax: {
+        status: 'The church\'s own <a href="' + LEGAL + '">legal notice</a> describes Psanctuary Church as “a lawfully incorporated ' + C508 + ' Faith Based Organization”.',
+        deductible: 'The church\'s <a href="' + MINISTRIES_DONATE + '">donation page</a> says: “All donations to Psanctuary (as a ' + C508 + ') are tax deductible.” It adds: “Please consult and confirm with your CPA regarding all tax related benefits for you personally.”',
+        receipts: 'Ask the church for one: email <a href="mailto:info@psanctuary.org" data-arr-direct>info@psanctuary.org</a> and say what you gave and when.',
+      },
+    },
+
+    // ── kit 1.4: the dock (.universal-footer .footer-inner, the kit's default) shows a fade and a
+    //    chevron on the side with more, so a phone visitor can tell it scrolls. ──────────────────
+    dock: { scroll: true },
+
+    // ── kit 1.4: a pledge of support, on its own page (/pledge/). A visitor signs it with a wallet:
+    //    a message, not a transaction, so it's free, sends nothing and records nothing, and there are
+    //    no counts. Same wallet connection as /donate/ (give.reownProjectId). The words follow the
+    //    church's own (psanctuary.org: spiritual autonomy, peer support, communal care), in this
+    //    side's voice: a small, decentralized way to stand with the community. ───────────────────
+    pledge: {
+      href: ROOT + "/pledge/",
+      text: "I support Psanctuary: a sincere community rooted in spiritual autonomy, peer support and communal care, and the tools its people are growing together, out in the open.",
+      intro: "If Psanctuary matters to you, you can say so by signing a short pledge with a crypto wallet: a small, decentralized way to stand with the community. It's free: no gas and no money, and for now nothing is recorded. A pledge isn't membership; <a href=\"" + SITE + "/membership\">joining the church</a> is its own step.",
+      note: 'A pledge isn\'t a gift and asks nothing more of you. To give as well, see <a href="' + ROOT + '/donate/">the ways to give</a>.',
     },
 
     record: {
@@ -329,7 +363,12 @@
         { t: "psanctuary.org", k: "the church", i: "globe-simple", h: SITE, pin: true, x: "website main home church" },
         { t: "The ledger: every public change", k: "AstroLog", i: "scroll", h: LOG + "/ledger", pin: true, x: "commits github history code record plain words" },
         { t: "Map: every place, with pictures", k: "page", i: "map-trifold", h: LOG + "/map", pin: true, x: "sitemap where everything links overview thumbnails" },
-        { t: "Donate", k: "page", i: "heart", h: ROOT + "/donate/", x: "give gift support money contribution ledger thanks crypto" },
+        { t: "Donate", k: "page", i: "heart", h: ROOT + "/donate/", x: "give gift support money contribution ledger thanks crypto receipt tax deductible 508" },
+        { t: "A pledge of support", k: "page", i: "handshake", h: ROOT + "/pledge/", x: "pledge sign wallet support signature verify gratitude tokens soulbound" },
+        { t: "How a decentralized church can work", k: "portal", i: "graph", h: ROOT + "/#decentralized", x: "decentralized dao mycelium network gratitude tokens soulbound lens farcaster" },
+        { t: "Join or sign in: the member community", k: "Mighty Networks", i: "users-three", h: MIGHTY, pin: true, x: "community members mighty networks join sign in dashboard app clubs events" },
+        { t: "Every way to reach the church (CONTACTS.md)", k: "GitHub", i: "address-book", h: CONTACTS, x: "contacts email info address channels youtube spotify instagram facebook reach out" },
+        { t: "Legal notice", k: "psanctuary.org", i: "scroll", h: LEGAL, x: "legal 508 faith based organization rfra church status" },
         { t: "Roadmap", k: "page", i: "path", h: LOG + "/roadmap", x: "plans next future ideas direction" },
         { t: "Sustainability", k: "page", i: "plant", h: LOG + "/sustainability", x: "maintenance keep running tokens costs upkeep" },
         { t: "What to expect", k: "psanctuary.org", i: "compass", h: SITE + "/welcome", x: "welcome new members ceremony" },
