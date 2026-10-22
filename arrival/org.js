@@ -294,7 +294,7 @@
     pledge: {
       href: ROOT + "/pledge/",
       text: "I support Psanctuary: a sincere community rooted in spiritual autonomy, peer support and communal care, and the tools its people are growing together, out in the open.",
-      intro: "If Psanctuary matters to you, you can say so by signing a short pledge with a crypto wallet: a small, decentralized way to stand with the community. It's free: no gas and no money, and for now nothing is recorded. A pledge isn't membership; <a href=\"" + SITE + "/membership\">joining the church</a> is its own step.",
+      intro: "Three small steps: read the pledge, connect a wallet, sign. No gas and no money, and for now nothing is recorded. A pledge isn't membership; <a href=\"" + SITE + "/membership\">joining the church</a> is its own step.",
       note: 'A pledge isn\'t a gift and asks nothing more of you. To give as well, see <a href="' + ROOT + '/donate/">the ways to give</a>.',
     },
 
