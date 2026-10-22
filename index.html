@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Psanctuary on GitHub</title>
-<meta name="description" content="Psanctuary&#x27;s playful, decentralized side on GitHub: an entry portal, a public changelog, a library of how things are built, a map, and a way to give.">
+<meta name="description" content="Psanctuary&#x27;s playful, decentralized side on GitHub: how a decentralized church can work, a public changelog, a library, a map, a way to give, and a pledge of support.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.png">
 <!-- Link previews (Telegram, iMessage, Slack, Discord…): every URL absolute, a real 1200×630 JPEG. -->
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://psanctuary.github.io/">
 <meta property="og:title" content="Psanctuary on GitHub">
-<meta property="og:description" content="Psanctuary&#x27;s playful, decentralized side on GitHub: an entry portal, a public changelog, a library of how things are built, a map, and a way to give.">
+<meta property="og:description" content="Psanctuary&#x27;s playful, decentralized side on GitHub: how a decentralized church can work, a public changelog, a library, a map, a way to give, and a pledge of support.">
 <meta property="og:image" content="https://psanctuary.github.io/social-card.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -21,14 +21,14 @@
 <meta property="og:image:alt" content="Psanctuary on GitHub: the playful side, beside an iridescent spore print.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Psanctuary on GitHub">
-<meta name="twitter:description" content="Psanctuary&#x27;s playful, decentralized side on GitHub: an entry portal, a public changelog, a library of how things are built, a map, and a way to give.">
+<meta name="twitter:description" content="Psanctuary&#x27;s playful, decentralized side on GitHub: how a decentralized church can work, a public changelog, a library, a map, a way to give, and a pledge of support.">
 <meta name="twitter:image" content="https://psanctuary.github.io/social-card.jpg">
 <meta name="twitter:image:alt" content="Psanctuary on GitHub: the playful side, beside an iridescent spore print.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-<!-- Psanctuary's arrival kit (v1.2): one stylesheet + script shared with the AstroLog, served from
+<!-- Psanctuary's arrival kit (v1.4): one stylesheet + script shared with the AstroLog, served from
      /arrival/ on this site. arrival.js applies the visitor's light, motion, contrast, text size and
      cursor choice before first paint, and draws the navbar, footer and modals from org.js, so it
      loads here in <head>. site.css is this portal's page chrome (header, footer, dock). -->
@@ -77,6 +77,96 @@
     :root:not([data-motion]) .gill { animation: none; stroke-dashoffset: 0; }
     :root:not([data-motion]) .dust { animation: none; opacity: 1; }
   }
+
+  /* ── the playful side, a little further (2026-10-22): spore-print marks on the headings, a prism
+     that drifts slowly through its colours, and a mycelium that answers the pointer. Every moving
+     part rests with Still, reduced motion (before any choice), reading mode and more contrast. ── */
+  @property --psy-turn { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+  @keyframes psy-turn { to { --psy-turn: 360deg; } }
+  @keyframes psy-shift { from { filter: hue-rotate(-28deg); } to { filter: hue-rotate(38deg); } }
+  main h2 { display: flex; align-items: center; gap: 0.6rem; }
+  /* a tiny spore print: gills in the spore colour around a stem ring in the accent */
+  main h2::before {
+    content: ""; flex: none; width: 0.9em; height: 0.9em; border-radius: 50%;
+    background:
+      radial-gradient(circle, var(--background) 0 16%, var(--accent) 17% 27%, transparent 28%),
+      repeating-conic-gradient(from 4deg, color-mix(in srgb, var(--spore) 88%, transparent) 0 2.6deg, transparent 2.6deg 11deg);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--spore) 38%, transparent), 0 0 12px -2px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .myc-intro { margin: 0 0 0.25rem; }
+  .myc-figure { margin: 1rem -0.5rem 0.25rem; }
+  #mycelium { display: block; width: 100%; height: auto; overflow: visible; }
+  .my-hypha {
+    fill: none; stroke-linecap: round;
+    stroke: color-mix(in srgb, var(--accent) calc(var(--lit, 0) * 100%), var(--spore));
+    stroke-width: calc(0.8px + var(--lit, 0) * 1.4px);
+    opacity: calc(0.36 + var(--lit, 0) * 0.64);
+    transition: opacity 0.5s ease, stroke-width 0.5s ease, stroke 0.5s ease;
+  }
+  .my-node {
+    fill: color-mix(in srgb, var(--accent) calc(var(--lit, 0) * 100%), var(--spore));
+    opacity: calc(0.55 + var(--lit, 0) * 0.45);
+    transform-box: fill-box; transform-origin: center; transform: scale(calc(1 + var(--lit, 0) * 0.9));
+    transition: opacity 0.4s ease, transform 0.4s ease, fill 0.4s ease;
+  }
+  .my-hub { fill: var(--background); stroke: color-mix(in srgb, var(--accent) calc(40% + var(--lit, 0) * 60%), var(--spore)); stroke-width: 2.2; opacity: 1; transform: scale(calc(1 + var(--lit, 0) * 0.35)); }
+  .my-ring { fill: none; stroke: var(--spore); stroke-width: 1; stroke-dasharray: 2 3.5; opacity: calc(0.35 + var(--lit, 0) * 0.65); transition: opacity 0.4s ease; }
+  .my-label {
+    font: 600 13px/1 var(--font-body); letter-spacing: 0.01em;
+    fill: color-mix(in srgb, var(--heading) calc(var(--lit, 0) * 100%), var(--muted));
+    paint-order: stroke; stroke: var(--background); stroke-width: 5px; stroke-linejoin: round;
+    transition: fill 0.4s ease;
+  }
+  .my-probe-line { fill: none; stroke: var(--accent); stroke-width: 1; stroke-linecap: round; opacity: calc(var(--lit, 0) * 0.85); }
+  #mycelium.is-still *, #mycelium.is-still { transition: none !important; animation: none !important; }
+  .myc-hint { margin: 0.2rem 0 0; text-align: center; font-size: 0.85rem; color: var(--muted); }
+  :root[data-cursor="off"] .myc-hint .pointer, :root[data-motion="still"] .myc-hint .pointer { display: none; }
+  :root[data-reading="on"] #mycelium { opacity: 0.6; }
+  :root[data-contrast="more"] .my-hypha { opacity: calc(0.2 + var(--lit, 0) * 0.8); }
+
+  .threads { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.75rem; }
+  .thread {
+    position: relative; overflow: hidden; padding: 1rem 1.05rem 1.05rem; border-radius: 16px;
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      conic-gradient(from var(--psy-turn), var(--spore), var(--accent), color-mix(in srgb, var(--accent) 50%, #9fe0c0), color-mix(in srgb, var(--spore) 45%, #f0a6d0), var(--spore)) border-box;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  /* a faint spore print rising from the card's corner */
+  .thread::after {
+    content: ""; position: absolute; right: -2.6rem; top: -2.6rem; width: 6.5rem; height: 6.5rem; border-radius: 50%; pointer-events: none;
+    background:
+      radial-gradient(circle, transparent 0 14%, color-mix(in srgb, var(--accent) 60%, transparent) 15% 18%, transparent 19%),
+      repeating-conic-gradient(from 2deg, color-mix(in srgb, var(--spore) 60%, transparent) 0 1.4deg, transparent 1.4deg 7deg);
+    opacity: 0.32;
+  }
+  .thread:hover, .thread:focus-within { box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent), 0 10px 28px -16px var(--accent); }
+  .thread h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.5rem; margin: 0 0 0.35rem; font: 600 1.02rem/1.3 var(--font-body); color: var(--heading); }
+  .thread h3 .ph { color: var(--accent); font-size: 1.2rem; }
+  .thread p { margin: 0 0 0.55rem; color: var(--muted); font-size: 0.95rem; }
+  .thread a { font-weight: 600; font-size: 0.93rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .thread a:hover { text-decoration: underline; }
+  .tag { display: inline-block; white-space: nowrap; margin-left: 0.15rem; padding: 0.05rem 0.45rem; border-radius: 999px; font: 600 0.7rem/1.5 var(--font-body); letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent); }
+  .myc-fine { margin: 0.9rem 0 0; font-size: 0.88rem; color: var(--muted); }
+  :root[data-contrast="more"] .thread { background: var(--surface); border-color: var(--border); }
+
+  :root:not([data-motion="still"]):not([data-reading="on"]):not([data-contrast="more"]) main h2::before,
+  :root:not([data-motion="still"]):not([data-reading="on"]):not([data-contrast="more"]) #mycelium {
+    animation: psy-shift 17s ease-in-out infinite alternate;
+  }
+  :root:not([data-motion="still"]):not([data-reading="on"]):not([data-contrast="more"]) .thread { animation: psy-turn 30s linear infinite; }
+  .thread:nth-child(2) { animation-delay: -7.5s !important; }
+  .thread:nth-child(3) { animation-delay: -15s !important; }
+  .thread:nth-child(4) { animation-delay: -22.5s !important; }
+  :root:not([data-motion="still"]):not([data-reading="on"]) #mycelium:not(.is-still) .my-flow {
+    stroke-dasharray: 0.035 0.05; animation: my-flow 7s linear infinite; animation-delay: calc(var(--d, 0s) * -1);
+  }
+  @keyframes my-flow { to { stroke-dashoffset: -1; } }
+  @media (prefers-reduced-motion: reduce) {
+    :root:not([data-motion]) main h2::before, :root:not([data-motion]) #mycelium, :root:not([data-motion]) .thread, :root:not([data-motion]) .my-flow { animation: none; }
+    :root:not([data-motion]) .thread { transition: none; }
+  }
 </style>
 </head>
 <body>
@@ -113,6 +203,38 @@
       <p>Psanctuary is an inter-tradition church built around a sincere sacred mushroom practice. Its real home is <a href="https://www.psanctuary.org">psanctuary.org</a>, where Sunday service, membership, courses, and events all live. This GitHub organization is its decentralized, playful side: a place to try tools the community can own, with a little more color, and every change written down in the open.</p>
       <p>The church holds two GitHub organizations. Its sibling, <a href="https://psanctuarychurch.github.io">psanctuarychurch</a>, is the church's professional face on GitHub. You're in <code>psanctuary</code>, where the experiments live: one day, perhaps, a small network of the community's own and a DAO to go with it (there's a <a href="#community" data-arrival-open="community">sneak peek</a>).</p>
 
+      <!-- How a decentralized church can work: the mycelium (mycelium.js, decorative: every word is in
+           the cards) answers the pointer, and each card lights its own hub. Sneak peeks, no dates. -->
+      <h2 id="decentralized">How a decentralized church can work</h2>
+      <p class="myc-intro">A mushroom has no headquarters. Underground, its mycelium links roots across a whole forest and moves water and nutrients to wherever they're needed. This side of Psanctuary asks what a church could look like if it grew the same way. These are ideas being explored in the open, not how the church is run today.</p>
+      <figure class="myc-figure" aria-hidden="true">
+        <svg id="mycelium" viewBox="0 0 720 300" data-labels="Many hands|Deciding together|Gratitude|A pledge" focusable="false"></svg>
+        <figcaption class="myc-hint">Hover or focus a thread below to light its part of the web<span class="pointer">, or move your pointer through it</span>.</figcaption>
+      </figure>
+      <ul class="threads">
+        <li class="thread" data-hub="0">
+          <h3><i class="ph ph-users-three" aria-hidden="true"></i>Many hands, no single center</h3>
+          <p>Members gather in the church's member network, where member-led clubs meet. Alana tends the Maine frontier and Christopher W the Pennsylvania one. Like hyphae, each reaches where it's needed.</p>
+          <a href="https://psanctuary-member-community.mn.co/" data-arrival-open="community"><i class="ph ph-arrow-right" aria-hidden="true"></i>Where we gather</a>
+        </li>
+        <li class="thread" data-hub="1">
+          <h3><i class="ph ph-graph" aria-hidden="true"></i>Deciding together <span class="tag">Sneak peek</span></h3>
+          <p>A network of the community's own, on open protocols like Lens and Farcaster, paired with a Psanctuary DAO where members propose ideas and decide together. Privacy first.</p>
+          <a href="#community" data-arrival-open="community"><i class="ph ph-arrow-right" aria-hidden="true"></i>The network and DAO card</a>
+        </li>
+        <li class="thread" data-hub="2">
+          <h3><i class="ph ph-hand-heart" aria-hidden="true"></i>Tokens of gratitude <span class="tag">Sneak peek</span></h3>
+          <p>Soulbound, non-transferable tokens of gratitude, from Christopher W's gratitude-token project: a thank-you that stays in the wallet it's given to. It can't be sold, sent on or traded, and it isn't money. Still being tested.</p>
+          <a href="https://psanctuary.github.io/pledge/"><i class="ph ph-arrow-right" aria-hidden="true"></i>A first look, on the pledge page</a>
+        </li>
+        <li class="thread" data-hub="3">
+          <h3><i class="ph ph-handshake" aria-hidden="true"></i>A pledge, signed, not sent</h3>
+          <p>Here already: sign a short pledge of support with a crypto wallet. It's free and it sends nothing. Nothing is recorded, and there are no counts.</p>
+          <a href="https://psanctuary.github.io/pledge/"><i class="ph ph-arrow-right" aria-hidden="true"></i>Sign the pledge</a>
+        </li>
+      </ul>
+      <p class="myc-fine">Sneak peeks are a direction, not a promise: no dates, and nothing to sign up for yet. When there's something to try, it'll show up in the changelog first.</p>
+
       <h2 id="latest">What's changed</h2>
       <p class="section-intro">The AstroLog keeps a plain-language record of what's been built, newest first. Each entry has its own page, and its own preview card when you share it.</p>
       <!-- Filled from the AstroLog's search.json (same origin), so it never goes stale. -->
@@ -142,7 +264,11 @@
         </div></li>
         <li><i class="ph ph-heart" aria-hidden="true"></i><div>
           <a href="https://psanctuary.github.io/donate/">Donate</a>
-          <span>Ways to give, a thank-you list for those who'd like one, and crypto giving to come.</span>
+          <span>Ways to give, receipts and taxes in the church's own words, a thank-you list, and a wallet preview.</span>
+        </div></li>
+        <li><i class="ph ph-handshake" aria-hidden="true"></i><div>
+          <a href="https://psanctuary.github.io/pledge/">A pledge of support</a>
+          <span>Say Psanctuary matters to you by signing a short pledge with a wallet: free, nothing sent, nothing recorded.</span>
         </div></li>
         <li><i class="ph ph-path" aria-hidden="true"></i><div>
           <a href="https://psanctuary.github.io/changelog-astro-public/roadmap">Roadmap</a>
@@ -157,8 +283,12 @@
           <span>The front door to the changelog and library.</span>
         </div></li>
         <li><i class="ph ph-github-logo" aria-hidden="true"></i><div>
-          <a href="https://github.com/psanctuary/.github">Organization profile</a>
-          <span>The repository that introduces this organization on GitHub.</span>
+          <a href="https://github.com/psanctuary">Organization profile</a>
+          <span>The page that introduces this organization on GitHub, every door in one place.</span>
+        </div></li>
+        <li><i class="ph ph-address-book" aria-hidden="true"></i><div>
+          <a href="https://github.com/psanctuary/.github/blob/main/CONTACTS.md">Contacts</a>
+          <span>Every way to reach the church: its address, the contact form, the member network and its channels.</span>
         </div></li>
       </ul>
 
@@ -188,5 +318,7 @@
   <!-- The spore field: drifting spores and cursor-lit mycelium, shared with the AstroLog. It follows
        the kit's motion and cursor-effects choices. -->
   <script src="/arrival/sporefield.js" defer></script>
+  <!-- The mycelium in "How a decentralized church can work" (home only). -->
+  <script src="/mycelium.js" defer></script>
 </body>
 </html>
