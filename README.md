@@ -2,19 +2,23 @@
      Source of truth: https://github.com/psanctuary/.github/blob/main/profile/README.md
      This copy refreshes hourly via .github/workflows/mirror-profile-readme.yml -->
 
-<div align="center">
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/psanctuary/.github/main/profile/assets/banner-spore.svg">
+    <img alt="Psanctuary on GitHub: the decentralized, playful side of an inter-tradition mushroom church. Rooted in sincerity, cultivated by the mushroom." src="https://raw.githubusercontent.com/psanctuary/.github/main/profile/assets/banner-paper.svg" width="100%">
+  </picture>
+</p>
 
-# Psanctuary
-
-*“A space for community rooted in sincerity and cultivated by the mushroom.”* — [psanctuary.org](https://www.psanctuary.org)
-
-[![Home](https://img.shields.io/badge/🌐_Home-psanctuary.org-74BCE0?style=flat)](https://www.psanctuary.org)
-[![GitHub Portal](https://img.shields.io/badge/GitHub-psanctuary.github.io-181717?style=flat&logo=github&logoColor=white)](https://psanctuary.github.io)
-[![Status](https://img.shields.io/badge/Status-🌱%20Just%20planted-6A4C8C?style=flat)](https://github.com/psanctuary)
-
-</div>
-
----
+<p align="center">
+  <a href="https://www.psanctuary.org"><img alt="Website: psanctuary.org" src="https://img.shields.io/badge/website-psanctuary.org-74BCE0?style=flat-square"></a>
+  <a href="https://psanctuary.github.io/"><img alt="Entry portal" src="https://img.shields.io/badge/entry-portal-A88BC9?style=flat-square"></a>
+  <a href="https://psanctuary.github.io/changelog-astro-public/"><img alt="Psanctuary AstroLog: changelog and library" src="https://img.shields.io/badge/AstroLog-changelog_%26_library-9FE0C0?style=flat-square"></a>
+  <a href="https://psanctuary.github.io/changelog-astro-public/ledger"><img alt="Ledger: every public change" src="https://img.shields.io/badge/ledger-every_public_change-F0A6D0?style=flat-square"></a>
+  <a href="https://psanctuary.github.io/map/"><img alt="Map of everything" src="https://img.shields.io/badge/map-where_everything_is-C9F76F?style=flat-square"></a>
+  <a href="https://psanctuary-member-community.mn.co/"><img alt="Community on Mighty Networks" src="https://img.shields.io/badge/community-Mighty_Networks-6A4C8C?style=flat-square"></a>
+  <a href="https://psanctuary.github.io/donate/"><img alt="Donate" src="https://img.shields.io/badge/donate-ways_to_give-5FA8D3?style=flat-square"></a>
+  <a href="https://psanctuary.github.io/pledge/"><img alt="A pledge of support" src="https://img.shields.io/badge/pledge-sign_with_a_wallet-8C70B0?style=flat-square"></a>
+</p>
 
 In the church's own words:
 
@@ -22,48 +26,95 @@ In the church's own words:
 > psychedelic ecosystem, Psanctuary offers a model centered on spiritual autonomy, peer support, and
 > communal care. No gurus or celebrity shamans here. Just a sincere community, sharing wisdom.
 >
-> — [psanctuary.org](https://www.psanctuary.org)
+> <sub>From [psanctuary.org](https://www.psanctuary.org)</sub>
 
-## About this GitHub home
+## 🍄 Two organizations, one church
 
 Psanctuary's real home is [psanctuary.org](https://www.psanctuary.org): Sunday service, membership,
-courses, and events all live there. This organization is newer and much quieter, a place to keep the
-church's technical work, a public changelog, and a library of how things are built, out in the open.
+courses, ceremonies and events all live there. On GitHub, the church holds two organizations, and
+each has its own job:
 
-The church holds two GitHub organizations, [`psanctuarychurch`](https://github.com/psanctuarychurch)
-and [`psanctuary`](https://github.com/psanctuary), so the name stays safe while the work takes shape.
-This is `psanctuary`, the church's **decentralized, playful side**: a place to try tools the
-community can own, with a little more color. Its sibling, `psanctuarychurch`, is the church's
-professional face on GitHub. 🌈🍄
+| | |
+| --- | --- |
+| ⛪ **[psanctuarychurch](https://github.com/psanctuarychurch)** | The church's **professional face** on GitHub: its official home here, kept in order and out in the open. |
+| 🌈 **psanctuary** (you're here) | The **decentralized, playful dimension**: experiments in tools the community can own, a little more color, and an open record of how it's all built. |
 
-## 🔗 Explore
+## 🕸️ How a decentralized church can work
 
-- [🏠 Entry portal](https://psanctuary.github.io)
-- [🕰️ Changelog](https://psanctuary.github.io/changelog-astro-public/changelog): a plain-language
-  record of what's actually been built.
-- [📚 Library](https://psanctuary.github.io/changelog-astro-public/library): longer write-ups behind it.
-- [🌱 psanctuary.org](https://www.psanctuary.org): the church itself.
-- [🌿 Sibling organization: psanctuarychurch](https://github.com/psanctuarychurch)
+A mushroom has no headquarters. Underground, its mycelium links roots across a whole forest and
+moves what's needed to wherever it's needed. This side of Psanctuary asks what a church could look
+like if it grew the same way: many hands and no single center, members deciding together, and
+thanks that can't be bought or sold. Some of that is a sneak peek, not a promise:
+
+- 🕸️ **A network of our own**: profiles and posts on open protocols like Lens and Farcaster, so what
+  members share stays theirs, paired with **a Psanctuary DAO** where members propose ideas and decide
+  together. Privacy first. ([The community window](https://psanctuary.github.io/#community) has the sneak peek.)
+- 🙏 **Tokens of gratitude**: soulbound, non-transferable thank-yous from Christopher W's
+  gratitude-token project. One stays in the wallet it's given to; it can't be sold, sent on or traded,
+  and it isn't money. Still being tested; no dates.
+- 🤝 **A pledge of support**, already here: sign a short pledge with a wallet. It's free, it sends
+  nothing, nothing is recorded, and there are no counts. [Sign it](https://psanctuary.github.io/pledge/).
+
+The [portal](https://psanctuary.github.io/#decentralized) has the longer version, with a mycelium you can
+wake with your pointer.
+
+## 🧭 Explore
+
+| Where | What you'll find |
+| --- | --- |
+| 🏠 [Entry portal](https://psanctuary.github.io/) | Psanctuary's playful front door on GitHub: the latest changes, who made them, and the way into everything below. |
+| 🔭 [AstroLog](https://psanctuary.github.io/changelog-astro-public/) | The front porch of Psanctuary's record: what changed, how it works, and who did the work. |
+| 🕰️ [Changelog](https://psanctuary.github.io/changelog-astro-public/changelog) | Dated, plain-language entries, newest first, each with the full story folded underneath. |
+| 📚 [Library](https://psanctuary.github.io/changelog-astro-public/library) | Longer write-ups on how these pages are built, and why. |
+| 🗺️ [Map](https://psanctuary.github.io/map/) | Every place these pages lead, each with a picture of where it goes. |
+| 📜 [Ledger](https://psanctuary.github.io/changelog-astro-public/ledger) | Every public change to the code, in plain words, grouped by day and by kind. Refreshed daily. |
+| 💜 [Donate](https://psanctuary.github.io/donate/) | Giving through psanctuary.org, receipts and taxes in the church's own words, a thank-you list, and a wallet preview. |
+| 🤝 [Pledge](https://psanctuary.github.io/pledge/) | A pledge of support, signed with a wallet: free, nothing sent, nothing recorded, no counts. |
+| 🛤️ [Roadmap](https://psanctuary.github.io/changelog-astro-public/roadmap) | Where these pages are headed, without dates. |
+| 🌱 [Sustainability](https://psanctuary.github.io/changelog-astro-public/sustainability) | What keeps them running, and the plan for them to outlive any one person. |
+| 📇 [Contacts](https://github.com/psanctuary/.github/blob/main/CONTACTS.md) | Every way to reach the church: info@psanctuary.org, the contact form, and its channels. |
+| 🍄 [Community](https://psanctuary-member-community.mn.co/) | The church's member network on Mighty Networks: one link to join or sign in. |
+| 🔄 [Social previews](https://github.com/psanctuary/.github/blob/main/SOCIAL-PREVIEWS.md) | How to refresh link previews in Telegram, LinkedIn, Facebook and more, and which pages have their own share image. |
+
+Every page here shares one arrival kit: choose a light (Blacklight is this side's own), a pace and a
+contrast when you arrive, press <kbd>/</kbd> to search, tap the book for reading mode, and see what's
+new since your last visit. Move your pointer, and mycelium threads reach for the spores nearby.
+
+## 👥 People
+
+| | |
+| --- | --- |
+| **Eric O** | Co-founded Psanctuary with **Courtney M** and **Athena**. |
+| **Alana** | A minister leading the **Maine** frontier, and part of the web-dev team. |
+| **Christopher W** ([@drasticstatic](https://github.com/drasticstatic)) | Leads the **Pennsylvania** frontier, and looks after Psanctuary's GitHub home with [Alfred](https://github.com/drasticstatic/anthropas-argus-alfred-public-preview). |
+
+**Why there's no Discord:** Psanctuary once had one, and Eric O closed it on purpose, so the
+community gathers in one place, on [Mighty Networks](https://psanctuary-member-community.mn.co/). A
+Discord may only ever return as a help-desk back end most people would never see, unless a DAO or
+something new grows here. Time will tell.
+
+## 📦 Repositories
+
+| Repository | What it holds |
+| --- | --- |
+| [psanctuary.github.io](https://github.com/psanctuary/psanctuary.github.io) | The entry portal (`/`, `/donate/`, `/pledge/`, `/map/`), which also serves the arrival kit every Psanctuary page shares. |
+| [changelog-astro-public](https://github.com/psanctuary/changelog-astro-public) | The AstroLog's published pages (written in a private source repository). |
+| [.github](https://github.com/psanctuary/.github) | This profile, and the defaults every repository here shares. |
 
 ## 🤝 Community health
 
-- [`CONTRIBUTING.md`](https://github.com/psanctuary/.github/blob/main/CONTRIBUTING.md)
-- [`SECURITY.md`](https://github.com/psanctuary/.github/blob/main/SECURITY.md)
-- [`SOCIAL-PREVIEWS.md`](https://github.com/psanctuary/.github/blob/main/SOCIAL-PREVIEWS.md): how to refresh link previews in Telegram, LinkedIn, Facebook and more, and which pages have their own share image
-
+- [`CONTACTS.md`](https://github.com/psanctuary/.github/blob/main/CONTACTS.md): every way to reach the church
+- [`CONTRIBUTING.md`](https://github.com/psanctuary/.github/blob/main/CONTRIBUTING.md): how to help, gently
+- [`SECURITY.md`](https://github.com/psanctuary/.github/blob/main/SECURITY.md): reporting a security problem
+- [`SOCIAL-PREVIEWS.md`](https://github.com/psanctuary/.github/blob/main/SOCIAL-PREVIEWS.md): how to refresh link previews, and which pages have their own share image
 
 ## 📄 License
+
 - 💻 **Code:** MIT, see [`LICENSE`](https://github.com/psanctuary/.github/blob/main/LICENSE)
 - 📝 **Written content** (docs, changelog and library prose, READMEs): CC BY-SA 4.0, see [`LICENSE-CONTENT`](https://github.com/psanctuary/.github/blob/main/LICENSE-CONTENT)
-- 🏷️ **Names, logos and marks:** not covered by either license, see [`TRADEMARKS.md`](https://github.com/psanctuary/.github/blob/main/TRADEMARKS.md)
+- 🏷️ **The Psanctuary name, logos and marks:** not covered by either license, see [`TRADEMARKS.md`](https://github.com/psanctuary/.github/blob/main/TRADEMARKS.md)
 
 ---
 
-<div align="center">
-<sub>A small note from Alfred, the agent who set this up</sub>
-</div>
-<br>
-
-<em>Everything here was gathered from psanctuary.org's own words, so it's sure to have gaps. The
-people who actually tend this community know it far better than any page can. Whenever the church is
-ready to shape this space, it's yours to grow.</em>
+<p align="center"><sub>Everything here was gathered from psanctuary.org's own words, so it's sure to have gaps. The
+people who tend this community know it far better than any page can, and this space is theirs to grow.</sub></p>
