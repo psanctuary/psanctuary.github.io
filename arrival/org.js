@@ -17,6 +17,8 @@
   var MIGHTY = "https://psanctuary-member-community.mn.co/";
   // Every way to reach the church, on GitHub (psanctuary/.github).
   var CONTACTS = "https://github.com/psanctuary/.github/blob/main/CONTACTS.md";
+  // The reading room's public lane: the proposals, procedures and decks marked for visitors (2026-10-31).
+  var READING = ROOT + "/reading-room-public/";
   // The church's own words about its standing and about giving, quoted on /donate/ (receipts and
   // taxes): the legal notice on psanctuary.org, and the donation page on its ministries site.
   var LEGAL = SITE + "/legal-notice";
@@ -148,6 +150,7 @@
           icon: "info",
           priority: 1,
           items: [
+            { id: "reading", label: "Proposals, procedures & decks", icon: "stack", href: READING, note: "The reading room: what's ready for visitors" },
             { id: "roadmap", label: "Roadmap", icon: "path", href: LOG + "/roadmap", note: "Where these pages are headed" },
             { id: "sustainability", label: "Sustainability", icon: "plant", href: LOG + "/sustainability", note: "What it takes to keep them running" },
             { id: "home", label: "psanctuary.org", icon: "globe-simple", href: SITE, note: "The church's main site" },
@@ -162,7 +165,7 @@
       groups: [
         { label: "Explore", icon: "compass", items: ["portal", "porch", "changelog", "library", "ledger", "map"] },
         { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", "pledge", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
-        { label: "About this build", icon: "wrench", items: ["roadmap", "sustainability", "github", { id: "contacts", label: "CONTACTS.md", icon: "address-book", href: CONTACTS }, { id: "source", label: "AstroLog source", icon: "code", href: "https://github.com/psanctuary/changelog-astro-public" }] },
+        { label: "About this build", icon: "wrench", items: ["reading", "roadmap", "sustainability", "github", { id: "contacts", label: "CONTACTS.md", icon: "address-book", href: CONTACTS }, { id: "source", label: "AstroLog source", icon: "code", href: "https://github.com/psanctuary/changelog-astro-public" }] },
         { label: "Psanctuary", icon: "plant", items: ["home", "sibling", { id: "youtube", label: "YouTube", icon: "youtube-logo", href: "https://www.youtube.com/@psanctuarychurch" }] },
       ],
       note: "Code here is MIT licensed and the words are CC BY-SA 4.0. The Psanctuary name and marks belong to the church.",
@@ -369,6 +372,7 @@
         { t: "Join or sign in: the member community", k: "Mighty Networks", i: "users-three", h: MIGHTY, pin: true, x: "community members mighty networks join sign in dashboard app clubs events" },
         { t: "Every way to reach the church (CONTACTS.md)", k: "GitHub", i: "address-book", h: CONTACTS, x: "contacts email info address channels youtube spotify instagram facebook reach out" },
         { t: "Legal notice", k: "psanctuary.org", i: "scroll", h: LEGAL, x: "legal 508 faith based organization rfra church status" },
+        { t: "Proposals, procedures & decks", k: "reading room", i: "stack", h: READING, x: "reading room proposals procedures sop decks slides welcome public" },
         { t: "Roadmap", k: "page", i: "path", h: LOG + "/roadmap", x: "plans next future ideas direction" },
         { t: "Sustainability", k: "page", i: "plant", h: LOG + "/sustainability", x: "maintenance keep running tokens costs upkeep" },
         { t: "What to expect", k: "psanctuary.org", i: "compass", h: SITE + "/welcome", x: "welcome new members ceremony" },
@@ -444,6 +448,8 @@
         "Pledge": "Compromiso",
         "Sign a pledge of support: free, nothing sent": "Firma un compromiso de apoyo: gratis, no se envía nada",
         "About": "Acerca de",
+        "Proposals, procedures & decks": "Propuestas, procedimientos y presentaciones",
+        "The reading room: what's ready for visitors": "La sala de lectura: lo que está listo para visitantes",
         "Roadmap": "Hoja de ruta",
         "Where these pages are headed": "Hacia dónde van estas páginas",
         "Sustainability": "Sostenibilidad",
